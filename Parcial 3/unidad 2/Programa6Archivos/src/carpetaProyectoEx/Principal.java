@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package carpetaProyecto;
+package carpetaProyectoEx;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +17,9 @@ import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame {
 
     public boolean VenatanaCrear = false;
+   private Mostrar mostrar;
+   private crear crear;
+   
     
     /**
      * Creates new form Principal
@@ -105,20 +111,49 @@ return estadoF;
     private void mnuAcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAcActionPerformed
         // TODO add your handling code here:
         //JOptionPane.showMessageDialog(null, "Estado antes de acceder: "+VenatanaCrear);
-        
-            crear crear = new crear();
-            Escritorio.add(crear);
+        if (crear == null || crear.isClosed()){
+             crear = new crear();
+            Escritorio.add(crear);//la agragamos al escritorio
             crear.setVisible(true);
+        }else {
+            try {
+                crear.setSelected(true);//como si existe
+                crear.toFront();//traemos la ventana a frene 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+           
         
         
        
     }//GEN-LAST:event_mnuAcActionPerformed
 
     private void mnuAMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAMostrarActionPerformed
-        // TODO add your handling code here:
-        Mostrar mostrar = new Mostrar();
-        Escritorio.add(mostrar);
-        mostrar.setVisible(true);
+        try {
+            // TODO add your handling code here:
+           
+            if (mostrar == null||mostrar.isClosed()){
+                mostrar  = new Mostrar();
+                Escritorio.add(mostrar);
+                mostrar.setVisible(true);
+            }else{
+                try {
+                    mostrar.setSelected(true);
+                    mostrar.toFront();
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+             
+            
+            
+            
+           
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mnuAMostrarActionPerformed
 
     /**

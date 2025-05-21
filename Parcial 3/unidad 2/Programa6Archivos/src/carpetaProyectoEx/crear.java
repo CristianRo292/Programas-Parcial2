@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package carpetaProyecto;
+package carpetaProyectoEx;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,6 +23,7 @@ public class crear extends javax.swing.JInternalFrame {
     public crear() {
          initComponents();
         crearArchivo();
+        setClosable(true);
         
         
         
@@ -31,7 +32,7 @@ public class crear extends javax.swing.JInternalFrame {
          try {
            
             //aqui no sirve "setLocationRelativeTo"
-            FileWriter archivo = new FileWriter("agenda.txt");
+            FileWriter archivo = new FileWriter("agenda.txt",true);
             archivo.close();
         } catch (IOException ex) {
             Logger.getLogger(crear.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,7 +67,6 @@ public class crear extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(10, 238));
 
@@ -248,15 +248,6 @@ public class crear extends javax.swing.JInternalFrame {
         });
         jPanel5.add(btnGuardar);
 
-        btnSalir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnSalir);
-
         getContentPane().add(jPanel5, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -303,6 +294,13 @@ public class crear extends javax.swing.JInternalFrame {
                     archivo = new FileWriter("agenda.txt",true);
                     archivo.write(codigo+" _ "+nombre+" _ "+correo+" _ "+telefono+" _ "+eda+"\n");
                     archivo.close();
+                    JOptionPane.showMessageDialog(null, "Registro guardado");
+                    txtCodigo.setText("");
+                    txtNombre.setText("");
+                    txtCorreo.setText("");
+                    txtTelefono.setText("");
+                    txtEdad.setText("");
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(crear.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
@@ -389,17 +387,9 @@ public class crear extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
-       this.hide();//oculta ventana
-       
-       
-    }//GEN-LAST:event_btnSalirActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
