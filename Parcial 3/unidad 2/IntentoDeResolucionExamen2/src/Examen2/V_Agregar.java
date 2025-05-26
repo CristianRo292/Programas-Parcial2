@@ -78,7 +78,7 @@ private void Codigo() {
                 String []aDatos = renglon.split(" _ ");
                 String []aCodigo = renglonC.split(" _ ");
                 
-                if (aDatos[0]==aCodigo[0]){
+                if (aDatos[0].equals(aCodigo[0]){
                  M_Ctabla.addRow(new Object[]{aCodigo[0],aDatos[1],aDatos[2],aDatos[3]});
                 Tabla.setModel(M_Ctabla);
                 }
